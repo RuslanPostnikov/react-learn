@@ -10,40 +10,55 @@ export default class CarList extends React.Component {
                 {name: 'Mazda', year: 2010},
                 {name: 'BMW', year: 2020},
             ],
-            pageTitle: 'React Components'
+            pageTitle: 'React Components',
+            showCars: false
         };
     }
 
-    changeTitleHandler = (newTitle) => {
-
+    toggleCarsHandler = () => {
         this.setState({
-            pageTitle: newTitle
+            showCars: !this.state.showCars
         })
     }
 
-    handleInput = (e) => {
-        this.setState({
-            pageTitle: e.target.value
-        })
+    changeTitleHandler = pageTitle => {
+        this.setState({pageTitle})
     }
 
     render() {
+        // let cars = null;
+        //
+        // if(this.state.showCars) {
+        //     cars = this.state.cars.map((car, index) => {
+        //         return (
+        //             <Car
+        //                 key={index}
+        //                 name={car.name}
+        //                 year={car.year}
+        //                 onChangeTitle={() => this.changeTitleHandler(car.name)}
+        //             />
+        //         );
+        //     })
+        // }
+
         return (
             <>
                 <h1>{this.state.pageTitle}</h1>
-                <input type="text" onChange={this.handleInput}/>
-                <button onClick={this.changeTitleHandler.bind(this, 'Changed!')}>Change title</button>
+                <button onClick={this.toggleCarsHandler}>Toggle cars</button>
 
-                { this.state.cars.map((car, index) => {
-                    return (
-                        <Car
-                        key={index}
-                        name={car.name}
-                        year={car.year}
-                        onChangeTitle={() => this.changeTitleHandler(car.name)}
-                        />
-                    );
-                }) }
+                { this.state.showCars ?
+                    this.state.cars.map((car, index) => {
+                        return (
+                            <Car
+                                key={index}
+                                name={car.name}
+                                year={car.year}
+                                onChangeTitle={() => this.changeTitleHandler(car.name)}
+                            />
+                        );
+                    })
+                    : null
+                }
             </>
         );
     }
