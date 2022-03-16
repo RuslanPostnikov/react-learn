@@ -21,8 +21,18 @@ export default class CarList extends React.Component {
         })
     }
 
-    changeTitleHandler = pageTitle => {
-        this.setState({pageTitle})
+    onChangeName(name, index) {
+        const car = this.state.cars[index];
+        car.name = name;
+        const cars = [...this.state.cars];
+        cars[index] = car;
+        this.setState({cars})
+    }
+
+    deleteHandler(index) {
+        const cars = this.state.cars.concat();
+        cars.splice(index, 1);
+        this.setState({cars})
     }
 
     render() {
@@ -45,7 +55,7 @@ export default class CarList extends React.Component {
             <>
                 <h1>{this.state.pageTitle}</h1>
                 <button onClick={this.toggleCarsHandler}>Toggle cars</button>
-
+                {/*{ cars }*/}
                 { this.state.showCars ?
                     this.state.cars.map((car, index) => {
                         return (
@@ -53,7 +63,8 @@ export default class CarList extends React.Component {
                                 key={index}
                                 name={car.name}
                                 year={car.year}
-                                onChangeTitle={() => this.changeTitleHandler(car.name)}
+                                onChangeName={e => this.onChangeName(e.target.value, index)}
+                                onDelete={this.deleteHandler.bind(this, index)}
                             />
                         );
                     })
