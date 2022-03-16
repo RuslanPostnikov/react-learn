@@ -1,4 +1,5 @@
 import React from "react";
+import './CarList.scss';
 import Car from "./Car";
 
 export default class CarList extends React.Component {
@@ -54,7 +55,10 @@ export default class CarList extends React.Component {
         return (
             <>
                 <h1>{this.state.pageTitle}</h1>
-                <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+                <button
+                    className={'button'}
+                    onClick={this.toggleCarsHandler}
+                >Toggle cars</button>
                 {/*{ cars }*/}
                 <div style={{
                     width: 400,
