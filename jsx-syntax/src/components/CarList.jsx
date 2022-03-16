@@ -56,20 +56,26 @@ export default class CarList extends React.Component {
                 <h1>{this.state.pageTitle}</h1>
                 <button onClick={this.toggleCarsHandler}>Toggle cars</button>
                 {/*{ cars }*/}
-                { this.state.showCars ?
-                    this.state.cars.map((car, index) => {
-                        return (
-                            <Car
-                                key={index}
-                                name={car.name}
-                                year={car.year}
-                                onChangeName={e => this.onChangeName(e.target.value, index)}
-                                onDelete={this.deleteHandler.bind(this, index)}
-                            />
-                        );
-                    })
-                    : null
-                }
+                <div style={{
+                    width: 400,
+                    margin: 'auto',
+                    paddingTop: '20px'
+                }}>
+                    { this.state.showCars ?
+                        this.state.cars.map((car, index) => {
+                            return (
+                                <Car
+                                    key={index}
+                                    name={car.name}
+                                    year={car.year}
+                                    onChangeName={e => this.onChangeName(e.target.value, index)}
+                                    onDelete={this.deleteHandler.bind(this, index)}
+                                />
+                            );
+                        })
+                        : null
+                    }
+                </div>
             </>
         );
     }
