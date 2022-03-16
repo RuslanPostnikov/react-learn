@@ -1,1 +1,1 @@
-> React learning
+React learning
