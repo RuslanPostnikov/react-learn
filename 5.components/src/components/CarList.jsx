@@ -2,6 +2,7 @@ import React from "react";
 import './CarList.scss';
 import Car from "./Car";
 import ErrorBoundary from "./ErrorBoundary";
+import Counter from "./Counter";
 
 export default class CarList extends React.Component {
     constructor(props) {
@@ -9,8 +10,8 @@ export default class CarList extends React.Component {
         this.state = {
             cars: [
                 {name: 'Audi', year: 2018},
-                {name: 'Mazda', year: 2010},
-                {name: 'BMW', year: 2020},
+                // {name: 'Mazda', year: 2010},
+                // {name: 'BMW', year: 2020},
             ],
             pageTitle: 'React Components',
             showCars: false
@@ -51,7 +52,11 @@ export default class CarList extends React.Component {
         return (
             <>
                 <h1>{this.props.title}</h1>
+
+                <Counter />
+                <hr/>
                 <button
+                    style={{marginTop: 20}}
                     className={'button'}
                     onClick={this.toggleCarsHandler}
                 >Toggle cars</button>

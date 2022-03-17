@@ -1,5 +1,4 @@
 import React from "react";
-import Radium from "radium";
 import './Car.css';
 
 class Car extends React.Component {
@@ -36,11 +35,7 @@ class Car extends React.Component {
     }
 
     render() {
-        console.log('Car render')
-
-        if(Math.random() > 0.7) {
-            throw new Error('Car random failed')
-        }
+        console.log('Car render');
 
         const inputClasses = ['input'];
 
