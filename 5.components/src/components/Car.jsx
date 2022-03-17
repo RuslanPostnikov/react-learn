@@ -4,7 +4,25 @@ import './Car.css';
 
 class Car extends React.Component {
 
+    componentWillReceiveProps(nextProps, nextContext) {
+        console.log('Car componentWillReceiveProps', nextProps, nextContext)
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('Car shouldComponentUpdate', nextProps, nextState, nextContext)
+        return nextProps.name.trim() !== this.props.name.trim()
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('Car componentWillUpdate', nextProps, nextState, nextContext)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('Car componentDidUpdate', prevProps, prevState, snapshot)
+    }
+
     render() {
+        console.log('Car render')
         const inputClasses = ['input'];
 
         this.props.name.length ? inputClasses.push('green') : inputClasses.push('red');
@@ -37,4 +55,4 @@ class Car extends React.Component {
     }
 }
 
-export default Radium(Car);
+export default Car;
