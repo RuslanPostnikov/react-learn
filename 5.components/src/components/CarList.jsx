@@ -14,6 +14,7 @@ export default class CarList extends React.Component {
             pageTitle: 'React Components',
             showCars: false
         };
+        console.log('CarList constructor')
     }
 
     toggleCarsHandler = () => {
@@ -36,8 +37,16 @@ export default class CarList extends React.Component {
         this.setState({cars})
     }
 
-    render() {
+    componentWillMount() {
+        console.log('CarList componentWillMount')
+    }
 
+    componentDidMount() {
+        console.log('CarList componentDidMount')
+    }
+
+    render() {
+        console.log('CarList render')
         return (
             <>
                 <h1>{this.props.title}</h1>
