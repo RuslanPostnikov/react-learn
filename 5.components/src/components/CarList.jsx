@@ -1,6 +1,7 @@
 import React from "react";
 import './CarList.scss';
 import Car from "./Car";
+import ErrorBoundary from "./ErrorBoundary";
 
 export default class CarList extends React.Component {
     constructor(props) {
@@ -8,8 +9,8 @@ export default class CarList extends React.Component {
         this.state = {
             cars: [
                 {name: 'Audi', year: 2018},
-                // {name: 'Mazda', year: 2010},
-                // {name: 'BMW', year: 2020},
+                {name: 'Mazda', year: 2010},
+                {name: 'BMW', year: 2020},
             ],
             pageTitle: 'React Components',
             showCars: false
@@ -37,9 +38,9 @@ export default class CarList extends React.Component {
         this.setState({cars})
     }
 
-    componentWillMount() {
-        console.log('CarList componentWillMount')
-    }
+    // componentWillMount() {
+    //     console.log('CarList componentWillMount')
+    // }
 
     componentDidMount() {
         console.log('CarList componentDidMount')
@@ -62,13 +63,14 @@ export default class CarList extends React.Component {
                     { this.state.showCars ?
                         this.state.cars.map((car, index) => {
                             return (
-                                <Car
-                                    key={index}
-                                    name={car.name}
-                                    year={car.year}
-                                    onChangeName={e => this.onChangeName(e.target.value, index)}
-                                    onDelete={this.deleteHandler.bind(this, index)}
-                                />
+                                <ErrorBoundary key={index}>
+                                    <Car
+                                        name={car.name}
+                                        year={car.year}
+                                        onChangeName={e => this.onChangeName(e.target.value, index)}
+                                        onDelete={this.deleteHandler.bind(this, index)}
+                                    />
+                                </ErrorBoundary>
                             );
                         })
                         : null
