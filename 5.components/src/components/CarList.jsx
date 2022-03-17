@@ -10,8 +10,8 @@ export default class CarList extends React.Component {
         this.state = {
             cars: [
                 {name: 'Audi', year: 2018},
-                // {name: 'Mazda', year: 2010},
-                // {name: 'BMW', year: 2020},
+                {name: 'Mazda', year: 2010},
+                {name: 'BMW', year: 2020},
             ],
             pageTitle: 'React Components',
             showCars: false
