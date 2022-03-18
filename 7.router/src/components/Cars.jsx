@@ -23,7 +23,7 @@ export default class Cars extends React.Component {
                 paddingTop: '20px',
                 textAlign: 'center'
             }}>
-                <button onClick={this.props.onClick}>Go to homepage</button>
+                <button onClick={this.props.toHomepage}>Go to homepage</button>
                 <hr/>
                 {this.state.cars.map((car, index) => {
                     return (

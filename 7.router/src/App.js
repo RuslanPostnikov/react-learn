@@ -1,8 +1,11 @@
 import './App.scss';
-import {Route, NavLink} from "react-router-dom";
+import {Route, useNavigate, Routes} from "react-router-dom";
 import Cars from "./components/Cars";
 import About from "./components/About";
-import {useNavigate, Routes} from "react-router";
+import Layout from "./hoc/Layout";
+import CarDetail from "./components/CarDetail";
+import RequireAuth from "./hoc/RequireAuth";
+
 
 function App() {
     const navigate = useNavigate();
@@ -13,23 +16,14 @@ function App() {
 
     return (
         <div className="App">
-          <nav className="nav">
-            <ul>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink
-                    to="/about"
-                >About</NavLink></li>
-                <li><NavLink
-                    to={{pathname: "/cars",}}
-                >Cars</NavLink></li>
-            </ul>
-          </nav>
-
-          <hr/>
             <Routes>
-                <Route path="/" element={<h1>Home Page</h1>}/>
-                <Route path="/about" element={<About />} />
-                <Route path="/cars" element={<Cars onClick={goToHomepage}/>}/>
+                <Route path='/' element={<Layout />}>
+                    <Route index element={<h1>Home Page</h1>}/>
+                    <Route path="about" element={<RequireAuth><About /></RequireAuth>} />
+                    <Route path="cars" element={<Cars toHomepage={goToHomepage}/>}/>
+                    <Route path='cars/:name' element={<CarDetail />}/>
+                    <Route path='*' element={<h1 style={{color: 'red'}}>Page not fond 404</h1>}/>
+                </Route>
             </Routes>
         </div>
       );
