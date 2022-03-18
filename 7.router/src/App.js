@@ -9,9 +9,17 @@ function App() {
         <div className="App">
           <nav className="nav">
             <ul>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/cars">Cars</NavLink></li>
+                <li><NavLink to="/" exact>Home</NavLink></li>
+                <li><NavLink
+                    to="/about"
+                >About</NavLink></li>
+                <li><NavLink
+                    to={{
+                        pathname: "/cars",
+                        search: '?a=1&b=2',
+                        hash: 'wfm-hash'
+                    }}
+                >Cars</NavLink></li>
             </ul>
           </nav>
 
