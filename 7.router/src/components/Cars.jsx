@@ -3,6 +3,7 @@ import './Cars.scss';
 import Car from "./Car";
 
 export default class Cars extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,8 +20,11 @@ export default class Cars extends React.Component {
             <div style={{
                 width: 400,
                 margin: 'auto',
-                paddingTop: '20px'
+                paddingTop: '20px',
+                textAlign: 'center'
             }}>
+                <button onClick={this.props.onClick}>Go to homepage</button>
+                <hr/>
                 {this.state.cars.map((car, index) => {
                     return (
                         <Car

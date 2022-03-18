@@ -1,37 +1,38 @@
 import './App.scss';
-import {Route, BrowserRouter, Routes, NavLink} from "react-router-dom";
+import {Route, NavLink} from "react-router-dom";
 import Cars from "./components/Cars";
 import About from "./components/About";
+import {useNavigate, Routes} from "react-router";
 
 function App() {
-  return (
-      <BrowserRouter>
+    const navigate = useNavigate();
+
+    const goToHomepage = () => {
+        navigate('/');
+    }
+
+    return (
         <div className="App">
           <nav className="nav">
             <ul>
-                <li><NavLink to="/" exact>Home</NavLink></li>
+                <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink
                     to="/about"
                 >About</NavLink></li>
                 <li><NavLink
-                    to={{
-                        pathname: "/cars",
-                        search: '?a=1&b=2',
-                        hash: 'wfm-hash'
-                    }}
+                    to={{pathname: "/cars",}}
                 >Cars</NavLink></li>
             </ul>
           </nav>
 
           <hr/>
             <Routes>
-                <Route path="/" exact element={<h1>Home Page</h1>}/>
+                <Route path="/" element={<h1>Home Page</h1>}/>
                 <Route path="/about" element={<About />} />
-                <Route path="/cars" element={<Cars />}/>
+                <Route path="/cars" element={<Cars onClick={goToHomepage}/>}/>
             </Routes>
         </div>
-      </BrowserRouter>
-  );
+      );
 }
 
 export default App;

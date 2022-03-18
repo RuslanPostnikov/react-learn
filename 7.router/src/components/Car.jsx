@@ -1,13 +1,18 @@
 import React from "react";
 import './Car.scss';
+import {useNavigate} from "react-router";
 
-export default class Car extends React.Component {
-    render() {
+const Car = props => {
+        let navigate = useNavigate()
         return (
-            <div className={'Car'}>
-                <h3>Car name: {this.props.name}</h3>
-                <p>Year <strong>{this.props.year}</strong></p>
+            <div
+                className={'Car'}
+                onClick={() => navigate('/cars/' + props.name.toLowerCase())}
+            >
+                <h3>Car name: {props.name}</h3>
+                <p>Year <strong>{props.year}</strong></p>
             </div>
         );
-    }
 }
+
+export default Car;
