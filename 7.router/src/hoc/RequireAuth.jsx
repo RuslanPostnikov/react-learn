@@ -1,10 +1,13 @@
-import {Navigate} from "react-router-dom";
+import {Navigate, useLocation} from "react-router-dom";
+import {useAuth} from "../hook/useAuth";
 
 const RequireAuth = ({children}) => {
-  const auth = true;
+  const location = useLocation();
+  const {user} = useAuth();
 
-  if(!auth) {
-      return <Navigate to='/' />
+
+  if(!user) {
+      return <Navigate to='/login' state={{from: location}} />
   }
 
     return children;
