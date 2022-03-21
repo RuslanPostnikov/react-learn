@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  color: #c0b6b6;
+}
+
+.Actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.Actions button {
+  width: 150px;
+  height: 50px;
+  background: #11a4cb;
+  color: yellow;
+}
+
